@@ -40,6 +40,8 @@ dependencies:
   dio: ^5.7.0
   flutter_hooks: ^0.20.5
   shared_preferences: ^2.3.3
+  flutter_web_plugins:
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:

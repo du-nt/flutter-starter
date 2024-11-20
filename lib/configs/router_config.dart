@@ -4,8 +4,21 @@ import 'package:flutter_starter/screens/login_screen.dart';
 import 'package:flutter_starter/screens/profile_screen.dart';
 import 'package:flutter_starter/stores/user.store.dart';
 import 'package:go_router/go_router.dart';
+import 'package:signals/signals_flutter.dart';
 
 final GoRouter routerConfig = GoRouter(
+  refreshListenable: isAuthenticated.toValueListenable(),
+  redirect: (_, state) {
+    if (state.fullPath == '/profile' && !isAuthenticated.value) {
+      return '/login';
+    }
+
+    if (state.fullPath == '/login' && isAuthenticated.value) {
+      return '/';
+    }
+
+    return null;
+  },
   routes: <RouteBase>[
     GoRoute(
       path: '/',
@@ -18,21 +31,11 @@ final GoRouter routerConfig = GoRouter(
       builder: (BuildContext context, GoRouterState state) {
         return const ProfileScreen();
       },
-      redirect: (context, state) {
-        if (!isAuthenticated.value) return '/login';
-
-        return null;
-      },
     ),
     GoRoute(
       path: '/login',
       builder: (BuildContext context, GoRouterState state) {
         return const LoginScreen();
-      },
-      redirect: (context, state) {
-        if (isAuthenticated.value) return '/';
-
-        return null;
       },
     ),
   ],

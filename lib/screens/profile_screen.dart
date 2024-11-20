@@ -11,7 +11,7 @@ class ProfileScreen extends HookWidget {
       appBar: AppBar(title: const Text('Profile Screen')),
       body: Center(
         child: ElevatedButton(
-          onPressed: () => context.pop(true),
+          onPressed: () => context.go('/'),
           child: const Text('Back to the Home screen'),
         ),
       ),

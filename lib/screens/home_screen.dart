@@ -26,16 +26,12 @@ class HomeScreen extends HookWidget {
           children: <Widget>[
             ElevatedButton(
               onPressed: () async {
-                final bool? shouldRefresh = await context.push('/profile');
-
-                if (shouldRefresh == true) {
-                  students.refetch();
-                }
+                context.go('/profile');
               },
               child: const Text('Go to the Profile screen'),
             ),
             ElevatedButton(
-              onPressed: () => context.push('/login'),
+              onPressed: () => context.go('/login'),
               child: const Text('Go to the Login screen'),
             ),
             const Text('Home screen'),

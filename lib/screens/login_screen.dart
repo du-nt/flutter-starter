@@ -18,7 +18,7 @@ class LoginScreen extends HookWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             ElevatedButton(
-              onPressed: () => context.push('/'),
+              onPressed: () => context.go('/'),
               child: const Text('Go to the Home screen'),
             ),
             ElevatedButton(
